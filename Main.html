@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Web Project</title>
+    <link rel="stylesheet" href="./Main.css" />
+  </head>
+  <body>
+    <h1>TODO LIST</h1>
+    <div class="container">
+      <div class="Header">
+        <div class="search">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search note..."
+            maxlength="100"
+          />
+          <img src="./images/lens.svg" alt="Search" class="search-icon" />
+        </div>
+        <div class="custom-dropdown">
+          <button class="dropdown-toggle">All</button>
+          <ul class="dropdown-menu">
+            <li data-value="all">All</li>
+            <li data-value="completed">Completed</li>
+            <li data-value="incomplete">Incomplete</li>
+          </ul>
+        </div>
+        <button class="Icon" id="themeToggle">
+          <img src="./images/Vector.svg" alt="Moon Icon" class="moon-icon" />
+          <img src="./images/sun.svg" alt="Sun Icon" class="sun-icon" />
+        </button>
+      </div>
+
+      <div class="notes-container" id="notesContainer"></div>
+
+      <div class="Detective-check-footprint">
+        <img src="./images/Detective-check-footprint 1.svg" alt="Detective" />
+        <p class="empty-text">Empty...</p>
+      </div>
+    </div>
+
+    <button class="addbutton">
+      <img src="./images/plus.svg" alt="Add" />
+    </button>
+    <div class="popup-menu" id="popupMenu">
+      <div class="popup-content">
+        <h3>NEW NOTE</h3>
+        <div class="popup-options">
+          <input
+            class="note-input"
+            id="noteContentInput"
+            placeholder="Input your notice..."
+            maxlength="100"
+          />
+          <div class="popup-buttons">
+            <button class="popup-button cancel">CANCEL</button>
+            <button class="popup-button apply">APPLY</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="popup-menu" id="editPopupMenu" style="display: none">
+      <div class="popup-content">
+        <h3>EDIT NOTE</h3>
+        <div class="popup-options">
+          <input
+            class="note-input"
+            id="editNoteContentInput"
+            placeholder="Edit your note..."
+            maxlength="100"
+          />
+          <div class="popup-buttons">
+            <button class="popup-button cancel cancel-edit">CANCEL</button>
+            <button class="popup-button apply  save-edit">SAVE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="undo" class="undo-toast hidden">
+      <button id="undoaction">
+        <svg class="countdown-ring" width="30" height="30">
+        <circle class="ring-bg" cx="15" cy="15" r="12"></circle>
+        <circle class="ring" cx="15" cy="15" r="12"></circle>
+      </svg>
+      <span id="countdown">5</span> UNDO <img src="./images/undo.svg"/></button>
+    </div>
+  <script src="./Main.js"></script>
+  </body>
+</html>
