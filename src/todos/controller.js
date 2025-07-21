@@ -12,8 +12,8 @@ const gettodo = (req, res) => {
 };
 
 const addtodo = (req, res) => {
-  const { content } = req.body;
-  pool.query(queries.addnote, [content, false], (error, results) => {
+  const { title, completed } = req.body;
+  pool.query(queries.addnote, [title, completed], (error, results) => {
     if (error) {
       console.error("Insert error", error);
       return res.status(500).send("Insert error");
@@ -46,9 +46,24 @@ const deletetodo = (req, res) => {
   });
 };
 
+const restoretodo = (req, res) => {
+  const id = parseInt(req.params.id);
+  pool.query(queries.restorenote, [id], (error, results) => {
+    if (error) {
+      console.error("Restore error", error);
+      return res.status(500).send("Restore error");
+    }
+    if (results.rowCount === 0) {
+      return res.status(404).send("Todo not found");
+    }
+    res.status(200).json({ message: "Todo restored", id });
+  });
+};
+
 module.exports = {
   gettodo,
   addtodo,
   updatetodo,
   deletetodo,
+  restoretodo,
 };
